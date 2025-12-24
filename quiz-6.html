@@ -46,19 +46,39 @@
             }
         }
         function btn(){
+            if( id.value == "" ){
+                msg.innerHTML = "id필수"
+                id.focus();
+            }
+            else if(pwd.value == "" ){ //&& id.value != ""
+                msg.innerHTML = "pwd필수"
+                pwd.focus();
+            }
+            else if(pwd_check.value == "" ){ 
+                msg.innerHTML = "pwd_check 필수"
+                pwd_check.focus();
+            }
+            else if(name.value == "" ){ 
+                msg.innerHTML = "name 필수"
+                name.focus();
+            }else{
+                msg.innerHTML = `
+                    <h3>입력 데이터</h3>
+                    id : <b>${ id.value }</b><br>
+                    pwd : <b>${ pwd.value }</b><br>
+                    pwd_check : <b>${ pwd_check.value }</b><br>
+                    name : <b>${ name.value }</b><br>
+                `
+            }
+
+
             //alert("확인")
             //const id = document.getElementById("id");
             //const pwd = document.getElementById("pwd");
             //const pwd_check = document.getElementById("pwd_check");
             //const name = document.getElementById("name");
             //const msg = document.getElementById("msg");
-            msg.innerHTML = `
-                <h3>입력 데이터</h3>
-                id : <b>${ id.value }</b><br>
-                pwd : <b>${ pwd.value }</b><br>
-                pwd_check : <b>${ pwd_check.value }</b><br>
-                name : <b>${ name.value }</b><br>
-            `
+            
         }
     </script>
 </head>
