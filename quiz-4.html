@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function btn(){
+            const txt1 = document.getElementById("txt1");
+            const txt2 = document.getElementById("txt2");
+            const div = document.getElementById("msg");
+            console.log("txt1 : ", txt1.value )
+            console.log("txt2 : ", txt2.value )
+            console.log("txt2 == txt1 : ", txt2.value == txt1.value )
+            if( txt2.value == txt1.value ){
+                console.log("비밀번호 일치")
+                div.innerHTML = "일치"
+            }
+            if( txt2.value != txt1.value ){
+                //div.className = "aa"
+    div.innerHTML = "<span style=\"color : red;\">불 일치</span>"
+    //div.innerHTML = "<span style=\"color : red;\">불 일치</span>"
+    //div.innerHTML = '<span style=\"color : red;\">불 일치</span>'
+    //div.innerHTML = `<span style=\"color : red;\">불 일치</span>`
+                
+                txt1.focus();
+                
+                console.log("불 일치")
+                txt2.value = ""
+                txt1.value = ""
+            }
+        }
+    </script>
+    <style>.aa{ color: rebeccapurple;}</style>
+</head>
+<body>
+    <input type="text" id="txt1" placeholder="비번 입력"><br>
+    <input type="text" id="txt2" placeholder="비번 확인"><br>
+    <div id="msg"></div>
+    <input type="button" value="클릭" onclick="btn()"><br>
+</body>
+</html>

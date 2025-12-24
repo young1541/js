@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let bool = true;
+        function change(){
+            console.log( bool )
+            console.log( !bool )
+            let div = document.getElementById("div1");
+            let btn = document.getElementById("btn");
+            let color = ( bool ) ? "back" : "";
+            let msg = ( bool ) ? "되돌리기" : "변경";
+
+            div.className = color
+            btn.innerHTML = msg
+
+            bool = !bool
+        }
+        let size = 15;
+        function plus(){
+            size += 3;
+            let div = document.getElementById("div1");
+            div.style.fontsize = size+"px";
+        }
+        function minus(){
+            size = size -3;
+            let div = document.getElementById("div1");
+            div.style.fontsize = size+"px";
+        }
+        // 그림만든거 1 8 7 . . . 3 2 1 8 7 . . . 2 1
+        let x = 1;
+        function prev(){
+            /*
+            console.log("aaaa")
+            변수,입력
+            printf("내용")
+            */
+           
+            x = ( x == 1 ) ? 8 : x - 1;
+            //x = x -1
+            let img = document.getElementById("pic")
+            img.src = "images/최근상품0" + x +".jpg"
+        }
+        // 1 2 3 ... 7 8 1 2 3 ... 7 8 1
+        function next(){
+            // 9번 없음
+            x = ( x == 8 )? 1 : x + 1
+            //x = x + 1;
+            let img = document.getElementById("pic")
+            img.src = "images/최근상품0" + x +".jpg"
+        }
+    </script>
+    <style>
+        .back { background-color: gold;}
+        #wrap {width: 150px; height: 150px; text-align: center;}
+        #pic {width: 150px; height: 150px;}
+    </style>
+</head>
+<body>
+
+    <div id="wrap">
+        <img src="images/최근상품01.jpg" id="pic">
+        <input type="button" value="이전사진" onclick="prev()">
+        <input type="button" value="다음사진" onclick="next()">   
+    </div>
+
+    <div id="div1">div</div>
+    <button onclick="change()" id="btn">변경</button>
+    <hr>
+    <button onclick="plus()" >+</button> 
+    <button onclick="minus()">-</button> 
+
+    <!--
+    <div id="div1" class="back">div</div>
+    <button onclick="change()" id="btn">되돌리기</button>  
+    -->
+</body>
+</html>

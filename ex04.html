@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function init(){
+            //alert("실행")
+            
+            let div = document.getElementById("div1")
+            document.getElementById("div1").innerHTML = "test"
+            div.innerHTML = "test"
+            console.log( div )
+            console.log( document.getElementById("div1") )
+
+            div.style.color = "blue";
+            document.getElementById("div1").style.color = "red";
+
+            let name = prompt("이름 입력");
+            let age = prompt(`나이 입력`)
+
+            console.log("age type : ", typeof(age) )
+            console.log("age type : ", typeof(Number(age) ) )
+            console.log("age type : ", typeof(parseInt(age) ) )
+
+            let ageNum = Number( age / 3 ); //숫자형식
+            let ageNum2 = parseInt( age / 3 );
+             console.log("ageNum type : ", typeof( ageNum ) )
+            /*
+                숫자를 문자로 변환할거면
+                ageNum + "" 또는 ageNum.toString()
+            */
+             console.log("Number : ", ageNum )
+             console.log("parseInt : ", ageNum2 )
+
+            document.getElementById("div1").innerHTML =
+            `  
+                <b>이름</b> : ${name}<br>
+                <b>나이</b> : ${age + 1}<br> 
+                <b>나이</b> : ${ageNum + 3}<br> 
+                <b>나이</b> : ${ageNum2 + 3}<br>
+            
+
+            let num = 123;
+            console.log("num : ", num)
+            //num = "문자로 변환";
+            console.log("변경 후 num : ", num)
+`
+            const str = "안녕하세요";
+            console.log( `str : ${str}` )
+            //str = "변경합니다";
+            console.log( `변경 후 str : ${str}` )
+
+
+        }
+        function test01(){
+            document.getElementById("div1").style.fontSize="30px";
+            document.getElementById("div1").style.cloor= "green";
+            document.getElementById("div1").innerHTML = "안녕하세요"
+        }
+        function test02(){
+            let div = document.getElementById("div1");
+            div.style.fontSize="20px";
+            div.style.color= "gold";
+            div.innerHTML = "반가워"
+        }
+            
+    </script>
+</head>
+<body onload="init()">
+    <div id="div1"></div>
+    <button onclick="test01()">클릭</button>
+    <button onclick="test02()">클릭</button>
+</body>
+</html>
