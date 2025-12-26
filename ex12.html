@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //sumFunc01();
+        function sumFunc01() { //const test03 = () => { alert("실행 03") } 쓰는거랑 똑같음
+            alert("실행-01")
+        }
+        let sumFunc = function(){
+            alert("실행-02")
+        }
+        //sumFunc();
+        
+        const test03 = () => { alert("실행 03") }
+        //test03()
+        function test04(){
+            alert(1);
+            alert(2);
+            return 100;
+        }
+        //alert( test04() );
+        const test05 = () => {
+            alert(10);
+            alert(20);
+            return 1234;
+        }
+        //alert( test05() );
+
+        const test06 = ( a , b ) => {
+            alert(a + b);
+        }
+        //test06(10 , 20)
+
+        const test07 = () => { return 100+200 }
+        const test08 = () =>  100+200 
+        const test09 = () => ( 100+200 )
+
+        document.write(`test07 : ${ test07() }<br>`)
+        document.write(`test08 : ${ test08() }<br>`)
+        document.write(`test09 : ${ test09() }<br>`)
+
+        function test10( n ){
+            if( n % 2 ==0)
+                return "짝수";
+            return "홀수";
+            // 변수 = (조건)? : ;
+        }
+        document.write(`test10 : ${ test10(11) }<br>`)
+
+         const test11 = ( n ) => {
+            //const result = ( n % 2 == 0 ) ? "짝짝" : "홀홀";
+            //return result;
+            return ( n % 2 == 0 ) ? "짝짝" : "홀홀";
+        }
+        document.write(`test11 : ${ test11(11) }<br>`)
+
+        const test12 = ( n ) =>  
+                        ( n % 2 == 0 ) ? "t12짝짝" : "t12홀홀";
+        
+        document.write(`test12 : ${ test12(12) }<br>`)
+        
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

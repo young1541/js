@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*console.log("프로그램 시작")
+        function test(){
+            console.log("test 함수 실행")
+        }
+        console.log("함수 지나옴")
+        test();
+        console.log("프로그램 종료")
+
+        let num;
+        function localVal()
+        {
+            let num = 1000;
+            if(true)
+            {
+                let if_num = "설정"
+                num += 1000;
+                console.log("if : ", num)
+                console.log("if : ", if_num)
+            }
+            //console.log("if : ", if_num)
+            console.log("local : ", num)
+        }
+        function localVal2()        {
+            console.log("===localVal2 : ", num)
+        }
+        localVal();
+        localVal2();
+        */
+       //sumFunc();
+       function sumFunc(){
+        let n1 = 10, n2 = 20, sum = 0;
+        sum = n1 + n2;
+        document.write("두 수의 합 : "+sum)
+       }
+
+       const n1 = 100, n2 = 200;
+       //sumFunc( n1, n2 );
+       function sumFunc( n11111, a ){
+            let sum = 0;
+            sum = n11111 + a;
+            document.write("두 수의 합 : "+sum)
+       }    
+       const a1 = 100, a2 = 200;
+       let s = sumFunc2( 100 , 200 );
+       document.write("두 수의 합111 : " + s )
+       function sumFunc2( a1, a2 ){
+            let sum =0;
+            sum = a1 + a2;
+            return sum;
+       }
+
+       function testFunc01(x, y, z){ //함수 외우기
+            document.write(`<hr>매개변수 : ${x}, ${y}, ${z}`)
+            return x + y; "돌려 준다!!!"
+       }
+        testFunc01(10, 20, 30);
+        testFunc01( 10, 20 );
+        const result = testFunc01( 10 , 20, 30, 40 );
+        document.write(`<hr>return : ${result}`)
+
+        function testFunc02( n ){
+            document.write(`<hr>111 : ${n}`)
+            if( n == undefined) 
+                return "n값이 없습니다";
+            document.write(`<hr>222`)
+            return n * 20;
+        }
+        let re = testFunc02( 12345 );
+        document.write(`<hr>결과 값 : ${re}`)
+
+        function testFunc03(){
+            return [100, "두번째", 1234];
+        }
+        re = testFunc03();
+        document.write(`<hr>testFunc03 결과 값 : ${re}`)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
