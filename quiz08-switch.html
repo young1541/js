@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrap{ width: 500px; border: 1px solid; overflow: hidden;}
+        #pic {width: 100px; height: 100px;}
+    </style>
+    <script>
+        function init(){
+            addEventListener("keydown", kDown)
+        }
+        let imageNum = 1;
+        let width = 0;
+        let start = 0;
+        let end = 0;
+        function kDown( evnet ){
+            //console.log("스페이스 바 확인 : ", evnet )
+            const img = document.getElementById("pic");
+            const txt = document.getElementById("txt");
+            switch( event.key ){
+                case " " : 
+                    if( width <= 400){
+                        //console.log("스페이스 클릭")
+                        // 0
+                        //imageNum++; // imageNum = imageNum + 1
+                        // 1 
+                        img.src = "images/jol0" + imageNum + ".png"
+                        if( imageNum >= 3 ) imageNum = 0;
+                        width += 5;
+                        img.style.marginLeft = width+"px";
+                        if( start == 0 ){
+                            txt.innerHTML = "start"
+                            start = new Date().getTime();
+                        }
+                        if( width >= 405 ){
+                            end = new Date().getTime();
+                            txt.innerHTML = "종료 : " + (end - start)/1000 + "초"
+                        }
+                    }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+    <div id="wrap">
+        <div id="txt" style="margin-left: 100px;">READY</div>
+        <HR>
+            <img id="pic" src="images/jol01.png">
+    </div>
+    <script>
+        let div = document.getElementById("txt");
+        let num = 10;
+        let sum = 100;
+        //++num; // num = 11
+        // 전치 ( ++num ) : 우선시 된다. 제일 먼저 연산
+        // 전치 ( num++ ) : 모든 연산이 끝난 후 자기 자신을 증가한다
+        sum = sum + ++num;
+
+        div.innerHTML = sum + " : " + num;
+    </script>
+</body>
+</html>

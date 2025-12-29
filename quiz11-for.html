@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //function trFunc(tr){}
+        const trFunc = ( tr ) => {
+            for(let i=1 ; i <= 2 ; i++){
+                document.getElementById( i ).style.backgroundColor = ""
+            }
+            console.log( tr )
+            tr.style.backgroundColor = "yellow"
+        }
+
+        //function init(){}
+        const init = () => {
+            const table = document.getElementById("table")
+            let msg = "";
+            msg = `
+            <table border="1">
+                    <tr>
+                        <th>아이디</th><th>이름</th>
+                    </tr>
+            `;
+            console.log("처음 msg : ", msg)
+            for(let i=1 ; i <= 2 ; i++ ){
+                msg += `
+                    <tr onclick="trFunc(this)" id="${i}">
+                        <th>${i}반복id</th><th>반복이름</th>
+                    </tr>
+                `;
+            }
+            console.log("반복 후 msg : ", msg)
+            
+            msg += "</table>";
+            console.log("테이블 닫기 msg : ", msg)
+
+            table.innerHTML = msg;
+            
+            /*
+            //alert("실행")
+            const table = document.getElementById("table")
+            let msg = "";
+            for(let i=1 ; i <= 7 ; i++ ){
+                msg += `
+                    <tr>
+                        <td>${i}반복id</td><td>반복이름</td>
+                    </tr>
+                `;
+            }
+            console.log( msg )
+
+            table.innerHTML = `
+                <table border="1">
+                    <tr>
+                        <th>아이디</th><th>이름</th>
+                    </tr>
+                    ${msg}        
+                </table>
+            `;
+        */
+
+        }
+            
+    </script>
+</head>
+<body onload="init()">
+    <div id="table"><div>
+        <table border="1">
+            <tr>
+                <th>아이디</th><th>이름</th>
+            </tr>
+            <tr>
+                <th>반복id</th><th>반복이름</th>
+            </tr>
+            <tr>
+                <td>바본id</td><td>반복이름</td>
+            </tr>
+            </table>
+    </div>
+</body>
+</html>

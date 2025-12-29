@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+    <style>
+        tbody > tr { cursor : pointer; 
+        &:hover{
+            background-color:lightblue;
+        }
+    }            
+    </style>
+    <script>
+        let preId = 0; //pid : 0 이전 선택값
+        let newId = 0; //nid : 0 나중에 선택값
+        function trFunc(tr){
+            if( tr.style.backgroundColor == "" ){
+                tr.style.backgroundColor = "gold"
+               if( preId == 0 )
+                   preId = tr.id;
+                else
+                    newId = tr.id;
+               //console.log( preId ) 
+            }else{
+               tr.style.backgroundColor = ""
+               preId = 0
+            }
+            if( newId != 0 ){
+                console.log("둘다 선택시 실행")
+                document.getElementById( preId ).style.backgroundColor=""
+                preId = newId
+                newId = 0
+            }
+            /*
+            console.log( tr )
+            console.log(tr.style.backgroundColor == "" )
+            tr.style.backgroundColor = "gold"
+            console.log(tr.style.backgroundColor != "")
+            */
+        }        
+        //const trFunc = (tr) => {}
+    </script>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+            <th>아이디</th><th>이름</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr id="1" onclick="trFunc(this)">
+            <td>1 aaa</td><td>1 홍길동</td>
+        </tr>
+        <tr id="2" onclick="trFunc(this)">
+            <td>2 aaa</td><td>2 홍길동</td>
+        </tr>
+        <tr id="3" onclick="trFunc(this)">
+            <td>3 aaa</td><td>3 홍길동</td>
+        </tr>
+        <tr id="4" onclick="trFunc(this)">
+            <td>4 aaa</td><td>4 홍길동</td>
+        </tr>
+        <tr id="5" onclick="trFunc(this)">
+            <td>5 aaa</td><td>5 홍길동</td>
+        </tr>
+        <tr id="6" onclick="trFunc(this)">
+            <td>6 aaa</td><td>6 홍길동</td>
+        </tr>
+        <tr id="7" onclick="trFunc(this)">
+            <td>7 aaa</td><td>7 홍길동</td>
+        </tr>
+    </tbody>
+    </table>    
+</body>
+</html>

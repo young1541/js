@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>#div1{ cursor: pointer; }</style>
+    <script>
+        function divFunc( div_01 ){
+            //const div = document.getElementById("div1")
+            console.log( div_01 )
+            div_01.style.color = "red";
+        }
+        //const divFunc = () => {}
+    </script>
+</head>
+<body>
+    <div id="div1" onclick="divFunc(this)">안녕하세요</div>
+    <button onclick="divFunc(this)">클릭</button>
+</body>
+</html>

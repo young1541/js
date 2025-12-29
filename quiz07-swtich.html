@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #pic { width: 150px; height: 150px; }
+    </style>
+    <script>
+        
+        function init(){
+            addEventListener("keydown", kDown);
+        }
+        let top1 = 0;
+        let width = 0;
+        function kDown( event ){
+            //console.log( event )
+            //code : ArrowUp, ArrowLeft, ArrowDown, ArrowRight
+            //if(event.code == "ArrowUp" )
+            const pic = document.getElementById("pic");
+            switch( event.code ){
+                case "ArrowUp": 
+                    top1 = top1 - 5;
+                    console.log( top1 )
+                    pic.style.marginTop = top1+"px";
+                console.log("위"); break;
+                case "ArrowRight":
+                    width += 5; // width = width + 5;
+                    pic.style.marginLeft = width+"px";
+                    console.log("오른"); break;
+                case "ArrowDown":
+                    top1 = top1 + 5;
+                    console.log( top1 )
+                    pic.style.marginTop = top1+"px";    
+                    console.log("아래"); break;
+                case "ArrowLeft":
+                    width -= 5; // width = width - 5;
+                    pic.style.marginLeft = width+"px";    
+                    console.log("왼"); break;
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+    <img src="images/jo.png" id="pic">
+</body>
+</html>
