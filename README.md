@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script> //무조건 console 연결할때 써야됨
+        //( num % 2 == 0 ) ? 참 : 거짓;
+        const num = 12;
+        if( num % 2 == 0 ){
+            console.log("짝수인 경우. 참")
+        }else{
+            console.log("홀수인 경우. if 조건이 거짓인 경우")
+        }
+        console.log("다음 문장들 실행...")
+
+        const saveId = "aaa" , savePwd = "111";
+        let inputId ="aaa" , inputPWD = "111";
+
+        let msg;
+        if( saveId == inputId && savePwd == inputPWD ){ // 인증 통과
+            msg = "로그인 성공"    
+        }else{ // 인증 실패
+            msg = "로그인 실패"
+        }
+        console.log( msg )
+        // saveId = "aaa" , savePwd = "111";
+        inputId ="aaa";
+        inputPWD = "111";
+         if( saveId == inputId ){ // 존재하는 id 입니다
+            // 일치하는 id 일 경우 실행
+            if( savePwd == inputPWD ){
+                msg = "인증 성공"
+            }else{
+                msg = "비번 틀림"
+            }    
+        }else{ // 존재하지 않는 id 입니다
+            msg = "존재하지 않는 id 입니다"
+        }
+        console.log( msg )
+        function input(){
+            console.log("내용이 입력 딜 때마다 실행")
+            console.log(
+                document.getElementById("in").value
+            )
+        }
+        function change(){
+            console.log("포커스가 변경되면 실행")
+            let msg ="안녕하세요"
+            confirm.log( msg.length)
+        }
+    </script>
+</head>
+<body>
+        <input type="text" oninput="input()" id="in"><br>
+        <input type="text" onchange="change()"><br>
+        <input type="text" id="txt">
+</body>
+</html>
