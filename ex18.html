@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const test = () => {
+            console.log("test 호출")
+        }
+        window.onload = () => {
+            console.log("시작")
+            //test();
+            setTimeout( test, 2000 );
+            //setInterval(test, 2000);
+            //setTimeout(() => { console.log("직접 표현") }, 1000 );
+            console.log("종료")
+        }
+        let e;
+        const digClock = () => {
+            let today = new Date();
+            let time = today.getMonth() + 1 + "월 ";
+            time += today.getDate() + "일 "
+            time += today.getHours() + "시 "
+            time += today.getMinutes() + "분 "
+            time += today.getSeconds() + "초 "
+
+            document.getElementById("clock").innerHTML = time;
+            e = setTimeout( digClock, 1000 )
+        }
+        const endClock = () => { clearTimeout( e ) }
+
+        let t;
+        const start = () => {
+            t = setInterval( timer , 1000 );
+        }
+        const timer = () => {
+            let d =new Date();
+            document.getElementById("time").innerHTML = d.toLocaleString();
+        }
+        const end = () => {
+            clearInterval( t );
+        }
+    </script>
+</head>
+<body>
+    <div id="time"></div>
+    <button onclick="start()">start</button>
+    <button onclick="end()">stop</button>
+    <hr>
+    <div id="clock"></div>
+    <button onclick="digClock()">시작</button>
+    <button onclick="endClock()">종료</button>
+    
+</body>
+</html>
