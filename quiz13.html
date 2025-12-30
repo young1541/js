@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let userInfo = [
+            { 'id' : 'aaa', 'name' : '홍길동', 'age' : 20 },
+            { 'id' : 'bbb','name' : '김개똥', 'age' : 30 },
+            { 'id' : 'ccc', 'name' : '고길동', 'age' : 40 }
+        ]
+        const allUser = () => {
+            let msg = "";
+            userInfo.forEach( (user) => {
+                msg += `
+        <tr>
+            <td>${user['id']}</td><td>${user['name']}</td><td>${user['age']}</td>
+        </tr>
+            `;
+            } )
+            let table = `
+            <table border="1">
+                <tr>
+                    <th>아이디</th><th>이름</th><th>나이</th>
+                </tr>
+            ${msg}
+            </table>
+        `;
+            document.getElementById("table").innerHTML = table
+        }
+    </script>
+</head>
+<body>
+    <table border="1">
+        <tr><th>아이디</th><th>이름</th><th>나이</th>
+        </tr>
+    </table>
+
+    <div id="table">목록을 보여 줍니다</div>
+	<hr>
+	<button type="button" onclick="allUser()">모든 회원 보기</button>
+	<hr>
+	<input type="text" id="u_id" placeholder="input id">
+	<br>
+	<button type="button" onclick="getUser()">특정 회원 조회</button>
+	<hr>
+	<input type="text" id="del_id" placeholder="input id">
+	<br>
+	<button type="button" onclick="userDelete()">특정 회원 삭제</button>
+</body>
+</html>
