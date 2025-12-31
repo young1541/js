@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let userInfo = [
+            { 'id' : 'aaa', 'name' : '홍길동', 'age' : 20 },
+            { 'id' : 'bbb','name' : '김개똥', 'age' : 30 },
+            { 'id' : 'ccc', 'name' : '고길동', 'age' : 40 }
+        ]
+        const info = ( username ) => {
+            //alert("실행? "+ username )
+            let user = userInfo.filter( (u) => (u.id === username )? u : undefined  )
+            //console.log( user )
+            if( user.length != 0 ){
+                document.getElementById("table").innerHTML = `
+                    아이디 : ${user[0]["id"]}<br>
+                    이름 : ${user[0]["name"]}<br>
+                    나이 : ${user[0]["age"]}<br>
+                `;
+            }
+        }
+/*
+        <tr>
+            <td>${userInfo[0]['id']}</td>
+            <td onClick="info( '${userInfo[0]['id']}' )">${userInfo[0]['name']}</td>
+            <td>${userInfo[0]['age']}</td>
+        </tr>
+        <tr>
+            <td>${userInfo[1]['id']}</td>
+            <td onClick="info( '${userInfo[1]['id']}' )">${userInfo[1]['name']}</td>
+            <td>${userInfo[1]['age']}</td>
+        </tr>
+        <tr>
+            <td>${userInfo[2]['id']}</td>
+            <td onClick="info( '${userInfo[2]['id']}' )">${userInfo[2]['name']}</td>
+            <td>${userInfo[2]['age']}</td>
+        </tr>
+*/
+
+        const allUser = () => {
+            let msg = "";
+            userInfo.forEach( ( user ) => {
+                msg += `
+        <tr>
+            <td>${user['id']}</td>
+            <td onClick="info( '${user['id']}' )">${user['name']}</td>
+            <td>${user['age']}</td>
+        </tr>
+                `;
+            } )
+            const table = tableCreate( msg );
+            /*
+            let table = `
+                <table border="1">
+                    <tr>
+                        <th>아이디</th><th>이름</th><th>나이</th>
+                    </tr>
+                    ${msg}
+                </table>
+            `;
+            */
+            document.getElementById("table").innerHTML = table
+        }
+         
+        const getUser = () => {
+            let msg = ""
+            const uId = document.getElementById("u_id")
+            //console.log( uId.value )
+            //console.log(userInfo[0]['id'] == uId.value )
+            //console.log(userInfo[1]['id'] == uId.value )
+            //console.log(userInfo[2]['id'] == uId.value )
+            /*
+            for(let i=0 ; i < userInfo.length ; i++ ){
+                //console.log(userInfo[i]['id'] == uId.value )
+                if( userInfo[i]['id'] == uId.value ){
+                    //console.log( userInfo[i] )
+                    msg += `
+                        <tr>
+                            <td>${userInfo[i]['id']}</td>
+                            <td>${userInfo[i]['name']}</td>
+                            <td>${userInfo[i]['age']}</td>
+                        </tr>
+                    `;
+                }
+            }
+            */
+           /*
+            userInfo.forEach( (user) => {
+                if( user['id'] == uId.value ){
+                    msg += `
+                        <tr>
+                            <td>${user['id']}</td>
+                            <td>${user['name']}</td>
+                            <td>${user['age']}</td>
+                        </tr>
+                    `;
+                }
+            } )
+            */
+            /*
+            const result = userInfo.filter( (user) => {
+                if( user['id'] == uId.value ){
+                    return user;
+                }
+            } )
+            */
+           // 변수 = (조건식) ? 참인경우 : 거짓인경우 
+            let result = userInfo.filter( (user) => 
+                ( user['id'] == uId.value ) ? user : undefined )
+            //console.log( result )
+            //console.log( result[0] )
+            //console.log( result[0]['id'] )
+            if( result.length != 0 ){
+                result = result[0]
+                //console.log( result )
+                msg += `
+                        <tr>
+                            <td>${result['id']}</td>
+                            <td>${result['name']}</td>
+                            <td>${result['age']}</td>
+                        </tr>
+                    `;
+            }else{
+                msg += `<tr><td colspan="3">사용자 없음</td></tr>`
+            }
+            
+            const table = tableCreate( msg );
+            /*
+            let table = `
+                <table border="1">
+                    <tr>
+                        <th>아이디</th><th>이름</th><th>나이</th>
+                    </tr>
+                    ${msg}
+                </table>
+            `;
+            */
+            document.getElementById("table").innerHTML = table
+        }
+        function tableCreate( msg ){
+            let table = `
+                <table border="1">
+                    <tr>
+                        <th>아이디</th><th>이름</th><th>나이</th>
+                    </tr>
+                    ${msg}
+                </table>
+            `;
+            return table;
+        }
+        
+        const userDelete = () => {
+            const delId = document.getElementById("del_id");
+            /*
+            userInfo = userInfo.filter( (user) => {
+                if( user['id'] !== delId.value ){
+                    return user;
+                }
+            } );
+             */
+            userInfo = userInfo.filter( (user) => 
+                ( user['id'] !== delId.value ) ? user : undefined );
+            allUser();
+        }
+    </script>
+</head>
+<body>
+    <div id="table">목록을 보여 줍니다</div>
+	<hr>
+	<button type="button" onclick="allUser()">모든 회원 보기</button>
+	<hr>
+	<input type="text" id="u_id" placeholder="input id">
+	<br>
+	<button type="button" onclick="getUser()">특정 회원 조회</button>
+	<hr>
+	<input type="text" id="del_id" placeholder="input id">
+	<br>
+	<button type="button" onclick="userDelete()">특정 회원 삭제</button>
+</body>
+</html>

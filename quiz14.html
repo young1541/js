@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<script>
+var list=["최근상품01","최근상품02","최근상품03","최근상품04",
+    "최근상품05","최근상품06","최근상품07","최근상품08"];
+var x = 0;
+window.onload = () =>{
+    auto();
+}
+const auto = () =>{
+    if(x == list.length-1)  x = 0;
+    else  x = x+1;
+    document.getElementById("pic").src=`images/${list[x]}.jpg`;
+    document.getElementById(x).checked = true;
+    stopval = setTimeout(auto, 1000)
+}
+const stop = () => {
+    clearTimeout(stopval);
+    //마우스 나갓을 경우 이미지 바로 전환 되기 때문에
+    //이전 번호로 변경하고 마우스out되면 1증가되어 현재 이미지 보여줌
+    if(x == 0)  x = list.length-1;
+    else  x--;
+}
+const radioFunc = (radio) => {
+    radio.checked = true;
+    if(radio.id == 0)   x = list.length-1;
+    else    x = radio.id - 1;
+    document.getElementById("pic").src=`images/${list[radio.id]}.jpg`;
+}
+</script>
+<style>
+    #pic { width: 100px; height: 100px;}
+    #wrap { width: 220px; text-align: center;}
+</style>
+</head>
+<body>
+    <div id="wrap" onmouseover="stop()" onmouseout="auto()">
+        <img src="images/최근상품01.jpg" id="pic" >
+        <hr>
+        <input id="0" type="radio" onclick="radioFunc(this)" name="imgBtn">
+        <input id="1" type="radio" onclick="radioFunc(this)" name="imgBtn">
+        <input id="2" type="radio" onclick="radioFunc(this)" name="imgBtn">
+        <input id="3" type="radio" onclick="radioFunc(this)" name="imgBtn">
+        <input id="4" type="radio" onclick="radioFunc(this)" name="imgBtn">
+        <input id="5" type="radio" onclick="radioFunc(this)" name="imgBtn">
+        <input id="6" type="radio" onclick="radioFunc(this)" name="imgBtn">
+        <input id="7" type="radio" onclick="radioFunc(this)" name="imgBtn">
+        <hr>
+    </div>
+        
+</body>
+       
+</html>
