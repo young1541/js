@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let userInfo = [
+            {name : "홍길동", age : 20 },
+        ]
+        function test(){
+            console.log("기본데이터 : ", userInfo)
+            //alert("실행")
+            const form = document.getElementById("form_id")
+            const formData = new FormData( form )
+            console.log( formData ) //나중에 파일도 같이 전송할 수 있는 타입
+            //{id:값, name:값, age:값}
+            const data = Object.fromEntries( formData )
+            //userInfo.push( data )
+            userInfo = userInfo.conca( data )
+            console.log("추가후 데이터 : ", userInfo )
+        }
+        const test1 = () => {
+            console.log("기본데이터 : ", userInfo)
+            
+            const form = document.getElementById("form_id")
+            const formData = new FormData( form ) 
+            const data = Object.fromEntries( formData )
+
+            userInfo = userInfo.map( (user) =>{
+                if( user.name === data.name ){
+                    user.age = data.age
+                }
+                return user;
+            });
+
+            console.log("수정후 데이터 : ", userInfo)
+        }
+    </script>
+    데이터 추가/ 수정
+    <form id="form_id">
+        <input type="text" name="name" id="aa"><br>
+        <input type="text" name="age"><br>
+        <input type="button" onclick="test()" value="회원가입">
+        <input type="button" onclick="test1()" value="수정">
+    </form>
+</head>
+<body>
+    
+</body>
+</html>

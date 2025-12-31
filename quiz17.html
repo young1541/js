@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrap { width: 300px; border: 1px solid;
+            margin: 0 auto; text-align: center;}
+        #box {height: 200px; padding-top: 20px;}
+        #target { width: 150px; height: 150px; margin: 0 auto;
+            background-color: antiquewhite;
+            display: none;
+        }
+    </style>
+    <script>
+        let target;
+        window.onload = () => {
+            target = document.getElementById("target")
+            const show = document.getElementById("1")
+            const btn2 = document.getElementById("2")
+            const auto = document.getElementById("auto")
+            const remo = document.getElementById("removeTarget")
+            show.addEventListener("click", boxFunc)
+            btn2.addEventListener("click", boxFunc)
+            auto.addEventListener("click", boxFunc)
+            remo.addEventListener("click", boxFunc)
+            //target.style.display = "block"
+            //target.style.display = "none"
+        }
+        const boxFunc = ( event ) => {
+            clearTimeout( e )
+            switch( event.target.id ){                
+                case "1":
+                    target.style.background = "red";
+                    target.style.display = "block";  break;
+                case "2":
+                    target.style.display = "block";
+                    target.style.background = "green";  
+                    break;
+                case "removeTarget":target.style.display = "none"; break;
+                case "auto" : autoFunc();
+            }
+        }
+        let e;
+        let arrColor = ["red", "green" , "gold" , "pink "]
+        let index = 0;
+        let bool = true;
+        const autoFunc = () => {
+            //console.log("실행")
+            if( bool ){
+                target.style.display = "block";
+                target.style.background = arrColor[index]
+                index++;
+                if( index === arrColor.length )
+                    index = 0;
+            }else{
+                target.style.display = "none";
+            }
+            bool = !bool;
+            e = setTimeout(autoFunc, 100)
+        }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="box">
+            <h3 id="target"></h3>
+        </div>
+        <hr>
+        <button class="btn" id="1">버튼1</button>
+        <button class="btn" id="2">버튼2</button>
+        <button class="btn" id="auto">자동</button>
+        <button id="removeTarget">지우기</button>
+    </div>
+    
+</body>
+</html>

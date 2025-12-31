@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        const test1 = () => {
+            const num = "100";
+            console.log( num )
+
+            const num1 = ["100", 100 , "값", 1.111];
+                        //  0     1     2     3
+            console.log( num1 )
+            console.log( num1[0] )
+            num1[0] = "다른값"
+            console.log( num1[0] )
+
+            console.log( num1[3] )
+            console.log( num1.length )
+            console.log( num1 )
+            
+            for(let i = 0 ; i < num1.length ; i++ ){
+                //console.log("i : ", i)
+                console.log( `num1 ${i} : ${num1[i]}` )
+            }
+        }
+        const test2 = () => {
+            const arr = [ "내용1", "내용2", "내용3" ]
+            const str1 = arr.join()
+            console.log("배열 type : ", typeof arr );
+            console.log("배열 : ", arr );
+            console.log("str1 type : ", typeof str1 );
+            console.log("str1 : ", str1 );
+            // [ "내용1", "내용2", "내용3" ]
+            console.log("배열[0] : ", arr[0] );
+            // "내용1,내용2,내용3"
+            console.log("str1[0] : ", str1[2] );
+
+            const str2 = arr.join("-")
+            console.log("str2 : ", str2 );
+        }
+        const test3 = () => {
+            let arr = [ 111, 222, 333 ] // arr.length = 3
+            console.log(`기본 배열 : ${arr}`)
+            arr[ arr.length ] = "값 추가"
+            console.log(`기본 배열 : ${arr}`)
+            
+            arr.push("값1", "값2")
+            console.log(`push : ${arr}`)
+            
+            arr.pop()
+            console.log(`pop : ${arr}`)
+
+            arr.unshift("v1","v2")
+            console.log(`unshift : ${arr}`)
+            
+            arr.shift()
+            console.log(`shift : ${arr}`)
+
+
+            const arr2 = ["aaa", "bbb"]
+            // arr = v2,111,222,333,값 추가,값1,"aaa", "bbb"
+            const result = arr.concat( arr2 )
+            console.log( result )
+            //arr = v2,111,222,333,값 추가,값1,"aaa", "bbb"
+            arr.push( arr2 )
+            //arr = [v2,111,222,333,값 추가,값1, ["aaa", "bbb"] ]
+            console.log( "push", arr )
+        }
+        const test4 = () => {
+            const arr = [111,222,333]
+            arr.forEach( printArr )
+            /*
+            for(let i =0 ; i< arr.length ; i++){
+                console.log( i, arr[i] )
+            }
+            */
+            arr.forEach( 
+                function(item, index){
+                    console.log(`1데이터 ${index} : ${item}`)
+                } 
+            )
+            arr.forEach( 
+                (item, index) => {
+                    console.log(`2데이터 ${index} : ${item}`)
+                } 
+            )
+        }
+        function printArr(item, index){
+            console.log(`데이터 ${index} : ${item}`)
+        }
+        const test5 = () => {
+            const arr = [111,222,333]
+            const newArr = arr.map( mapTest )
+            console.log( newArr )
+
+            const newArr2 = arr.map(
+                ( v ) => {
+                    return v * 100;
+                }
+            );
+            console.log( newArr2 )
+
+            const newArr3 = arr.map( ( v ) =>  v * 100 );
+            console.log( newArr3 )
+        }
+        function mapTest(value){
+            return value * 10;
+        }
+
+       // arr = ["이미지01.jpg", "02", "03"]
+
+    </script>
+</head>
+<body onload="test5()">
+    
+</body>
+</html>

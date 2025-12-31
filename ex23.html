@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myClick(){
+            const result = confirm("처음 방문?")
+            console.log(result)
+            if( result ){ //참 인경우
+                document.getElementById("txt").innerHTML = "처음"
+            }else{
+                document.getElementById("txt").innerHTML = "재 방문"
+            }
+        }
+        const myClick2 = () => {
+            //window.open();
+            //window.open("https://www.naver.com");
+            //window.open("https://www.naver.com","_self");
+            //window.open("https://www.naver.com","","width=500, height=500");
+            window.open("ex23_popup.html","","width=500, height=500");
+        }
+        const test = () => {
+            //alert("test")
+            const fo = document.getElementById("fo")
+            console.log( fo )
+            console.log( fo.txt )
+            //const txt = document.getElementById("txt")
+            //txt.value == ""
+            if( fo.txt.value == ""){
+                alert("값입력")
+            }else{
+                fo.submit();
+            }
+        }
+        function tset(){
+            location.href = "ex20.html"
+        }
+
+        function init(){
+            const t01 =document.getElementById("t01")
+            const t02 =document.getElementById("t02")
+            t01.addEventListener("click", btn_listener )
+            t02.addEventListener("click", ( event ) => {
+                btn_listener( event )
+            } )
+            } //btn_listener(); 똑같은실행방법(직접적으로)
+        
+        function btn_listener( event ){
+            console.log( event )
+            switch( event.target.id ){
+                case "t01" : alert(1111); break;
+                case "t02" : alert(2222); break;
+            }
+        }
+        function test03( value ){
+            console.log( value )
+            const div = document.getElementById("remove");
+            switch( value.id ){
+                case "show" : 
+                    div.setAttribute("calss","a")
+                    break;
+                case "hidd" : 
+                    div.removeAttribute("class")
+                    break;
+            }
+        }
+    </script>
+    <style>
+        #remove {display: none;}
+        #remove.a {display: block; background-color: green;}
+    </style>
+</head>
+<body onload="init()">
+
+    <button onclick="test03(this)" id="show">보이기</button>
+    <div id="remove" class="a" >
+        <h3>안녕</h3>
+    <button onclick="test03(this)" id="hidd">숨기기</button>
+    </div>
+
+    <button type="button" id="t01">btn01</button>
+    <button type="button" id="t02">btn02</button>
+    <hr>
+    <button onclick="test2()">이동1</button>
+    <button onclick="location.href = 'ex20.html'">이동2</button>
+    <a href="ex20.html">ex20이동</a>
+
+    <form id="fo" action="ex22.html">
+        <input type="text" id="txt">
+        <input type="button" onclick="test()">
+    </form>
+
+    <button onclick="myClick2()">open</button>
+
+    <div id="txt"></div>
+    <button onclick="myClick()">cl</button>
+    
+</body>
+</html>
