@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const user = {
+            id :"값",
+            printId : () => {
+                alert("test : " + user['id']) //함수는 무조건 괄호쳐야됨 밑에2번째 로그옆에
+            }
+        }
+        const func01 = () => {
+            console.log( user['id'] )
+            console.log( user.printId() )
+            user.추가 = "ㅁㅁㅁㅁㅁ";
+            user['추가2'] = "aaaaa";
+            console.log( user )
+        }
+    </script>
+</head>
+<body>
+    <button onclick="func01()">클릭</button>
+</body>
+</html>

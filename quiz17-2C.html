@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td img { width: 100px; height: 100px; }
+        #modal_wrap { 
+            display: none;
+            width: 100%; height: 100%;
+            position: absolute; top: 0; left: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        #food {
+            position: absolute;
+            top: 100px; left : calc( 50% - 200px );
+            width: 400px; height: 500px; border: 1px solid;
+            border-radius: 5px; background-color: beige;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            //document.getElementById("0")
+            //document.getElementById("1")
+            //document.getElementById("2")
+            for( let i = 0; i<3 ; i++){
+                let ev = document.getElementById( i );
+                ev.addEventListener("click", views )
+            }
+        }
+        const views = ( event ) => {
+            console.log( event.target.src )
+            document.getElementById("imgSrc").src = event.target.src
+            let modal_wrap = document.getElementById("modal_wrap")
+            modal_wrap.style.display = "block"
+        }
+        function closeFunc(){
+            document.getElementById("modal_wrap").style.display = "none";
+        }
+        const views2 = ( event ) => {
+            console.log( event.target.src )
+            let modal_wrap = document.getElementById("modal_wrap")
+            modal_wrap.style.display = "block"
+
+            let food = document.getElementById("food")
+
+            /*
+            let msg =`
+                <img src="${event.target.src}">
+            `;
+            food.innerHTML = msg;
+            */
+           let img = document.createElement("img")
+           img.src = event.target.src;
+           img.width = "400";
+           img.height = "200"
+            food.appendChild( img )
+
+            const h3 = document.createElement("h3")
+            h3.innerHTML = "맛있는 음식"
+            food.appendChild( h3 )
+
+            const closeBtn = document.createElement("button")
+            closeBtn.innerHTML = "창 닫기"
+            closeBtn.addEventListener("click", closeFunc )
+            food.appendChild( closeBtn )
+        }
+        function closeFunc2(){
+            document.getElementById("modal_wrap").style.display = "none";
+            document.getElementById("food").innerHTML = ""
+        }
+    </script>
+</head>
+<body>
+    <div id="modal_wrap">
+        <div id="food">
+            <img src="" id="imgSrc" width="200px" height="100px">
+            <h3>내용 들어오고</h3>
+            <button onclick="closeFunc()">닫기closeFunc</button>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3"> - 상 품 목 록 - </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="images/맛집01.jpg" id="0"></td>
+                <td><img src="images/맛집02.jpg" id="1"></td>
+                <td><img src="images/맛집03.jpg" id="2"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
