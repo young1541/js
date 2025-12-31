@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {width: 100px; height: 100px;}
+        .list { position: fixed; right: 30px; top: 10px; width: 100px;}
+        .list_title {background-color: red;}
+    </style>
+    <script>
+        window.onload = () => {
+            const imgArr = ["최근상품01.jpg", "최근상품02.jpg" ,"최근상품03.jpg" ,
+            "최근상품04.jpg" ,"최근상품05.jpg" ,"최근상품06.jpg" ,
+            "최근상품07.jpg" ,"최근상품08.jpg",
+            ];
+            const imagetable = document.getElementById("image_table");
+            let table = document.createElement("table");
+            table.border = 1;
+            let image = "<tr>"; 
+            imgArr.forEach((value, index) => {
+                image += `
+                    <td>
+                        <img src="images/${value}" onclick="display(this)">    
+                    </td>
+                `;
+                //index = 0 1 2 3 4 5 6 7
+                //length = 8 / 2 = 4 - 1
+                if( index == imgArr.length / 2 - 1 ){ //그림 유지보수할때좋음
+                    image += "</tr><tr>";
+                }
+            });
+            image += "</tr>";
+            table.innerHTML = image
+            imagetable.appendChild( table )
+        }
+        let cnt = 0;        
+        const display = (image) => {
+            if (cnt == 0){
+                const ls = document.getElementById("ls")
+                ls.innerHTML = "최근 구경한 상품"
+                ls.style.backgroundColor = "green";
+            }
+            
+            const imageSize = 5
+            console.log( image )
+            const img = image.cloneNode(true);
+            const rp2 = document.getElementById("rp2")
+            rp2.appendChild( img )
+            cnt++;
+            if( cnt > imageSize ){
+                rp2.firstElementChild.remove();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="list">
+        <h3 class="list_title" id="ls" align="center">목록이<br>없습니다</h3>
+        <div id="rp2"></div>
+    </div>
+    <div id="image_table"></div>
+</body>
+</html>
